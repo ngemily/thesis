@@ -1,0 +1,39 @@
+% Copyright note: This package defines how titles should
+% be typeset at the columbidae University
+% Please check for updates
+\ProvidesPackage{columbidaeTitle}[2015/08/10 v.01 an
+example package^^J for wikibooks]
+\RequirePackage{graphicx}
+\newcommand*{\project}[1]{\gdef\@project{#1}%
+}
+\newcommand*{\@project}{Engineering Science Undergraduate Thesis}
+\newcommand*{\supervisor}[1]{\gdef\@supervisor{#1}%
+}
+\newcommand*{\@supervisor}{Prof. Stephen Brown}
+\newcommand*{\studentNo}[1]{\gdef\@studentNo{#1}%
+}
+\newcommand*{\@studentNo}{999007024}
+\renewcommand*{\maketitle}{%
+\begin{titlepage}
+%{\raggedleft%
+%    \includegraphics[width=3cm]{example-image-16x9}\par
+%}\vspace{1cm}
+    \centering
+{\scshape\LARGE University of Toronto \par}
+\vspace{1cm}
+{\scshape\Large\@project\unskip\strut\par}
+\vspace{1.5cm}
+{\huge\bfseries\@title\unskip\strut\par}
+\vspace{2cm}
+{\Large\itshape\@author\unskip\strut\par}
+{\Large\@studentNo\unskip\strut\par}
+\vfill
+supervised by\par
+\@supervisor\unskip\strut\par
+
+\vfill
+
+{\large \@date\par}
+\end{titlepage}
+}
+\endinput

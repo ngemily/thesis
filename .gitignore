@@ -1,0 +1,11 @@
+src/*.tex
+*.aux
+report.bbl
+report.bcf
+report.blg
+report.lof
+report.log
+report.out
+report.pdf
+report.run.xml
+report.toc
