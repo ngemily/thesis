@@ -136,9 +136,12 @@ is not.  This property creates an interface between the front-end and back-end,
 allowing for example one front-end to be used with multiple back ends.  Figure
 \ref{fig:opt_compiler} illustrates the components of an optimizing compiler.
 
-![\label{fig:opt_compiler} View of compiler, showing where optimization passes
-may be applied.  Transformations are applied
-iteratively.](imgs/compiler_detailed.png)
+\begin{figure}[htbp]
+\centering
+    \includegraphics[width=\textwidth]{imgs/compiler_detailed.png}
+    \caption{View of compiler, showing where optimization passes may be applied.  Transformations are applied iteratively.}
+    \label{fig:opt_compiler}
+\end{figure}
 
 In between the front and back end, optimizing compilers apply passes that
 transform the code for better performance.  Common optimizations include: dead

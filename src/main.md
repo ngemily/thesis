@@ -31,6 +31,7 @@ header-includes:
 \mainmatter
 
 \include{introduction}
+\include{background}
 \include{body}
 \include{conclusion}
 

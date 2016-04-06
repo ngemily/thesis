@@ -8,7 +8,7 @@
 -->
 
 Initially, the focus was on identifying compiler passes that improved
-performance in software, but detrimented performance in hardware.  
+performance in software, but detrimented performance in hardware.
 
 To do so first required a method for measuring performance.  These experiments
 were done on an Altera DE1-SOC, which contains a Cyclone V FPGA and an ARM A9
@@ -52,8 +52,12 @@ identify compiler passes where the software was improved and the hardware was
 worsened, because they would be of particular interest while investigating
 binary synthesis.
 
-![\label{fig:results} Initial comparison of compiler passes in hardware and
-software](imgs/results.png)
+\begin{figure}[htbp]
+\centering
+    \includegraphics[width=\textwidth]{imgs/results.png}
+    \caption{Initial comparison of compiler passes in hardware and software.}
+    \label{fig:results}
+\end{figure}
 
 # Future Work
 

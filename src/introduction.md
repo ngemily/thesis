@@ -18,8 +18,12 @@ by Vahid and Stitt of the University of California \cite{decompilation_technique
 They further investigate performing the reverse of traditional optimizing
 compiler passes to recover higher level control flow.
 
-![\label{fig:decompile} LegUp flow from source code and flow from
-binary.](imgs/binary_synthesis.png)
+\begin{figure}[htbp]
+\centering
+    \includegraphics[width=\textwidth]{imgs/binary_synthesis.png}
+    \caption{LegUp flow from source code and flow from binary.}
+    \label{fig:decompile}
+\end{figure}
 
 There are a number of stages where the program is being transformed from one
 format to another, as shown in Figure \ref{fig:decompile}.  Each transformation
