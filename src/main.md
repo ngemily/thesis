@@ -13,6 +13,7 @@ header-includes:
     - \usepackage[section]{placeins}
     - \usepackage[backend=biber]{biblatex}
     - \addbibresource{bib/report.bib}
+    - \usepackage{color}
 ---
 
 \renewcommand{\bibname}{References}
@@ -34,6 +35,10 @@ header-includes:
 \include{background}
 \include{body}
 \include{conclusion}
+
+\appendix
+\include{app_c}
+\include{app_ll}
 
 \backmatter
 \printbibliography[heading=bibintoc]

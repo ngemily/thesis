@@ -3,14 +3,15 @@ SRC=$(OBJ).md
 PDF=$(OBJ).pdf
 TEX=$(OBJ).tex
 
+FLAGS = --listings --chapters --filter pandoc-eqnos
 SECS := $(patsubst %.md,%.tex,$(wildcard src/*.md))
 
 all: $(SECS)
-	pandoc --filter pandoc-eqnos --chapters --standalone -o $(TEX) $(SRC)
+	pandoc $(FLAGS) --standalone -o $(TEX) $(SRC)
 	rubber --module=biber --pdf $(OBJ)
 
 %.tex : %.md
-	pandoc --filter pandoc-eqnos --chapters $< -o $@
+	pandoc $(FLAGS) $< -o $@
 
 preview:
 	qlmanage -p $(PDF) &> /dev/null
