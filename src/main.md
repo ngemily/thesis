@@ -1,6 +1,7 @@
 ---
-title: 'Final Report'
-date: April 8, 2016
+title: 'Investigation into Existing Decompilers for Usage with High Level
+Synthesis'
+date: April 2016
 author: Emily Ng
 filter: pandoc-eqnos
 classoption: oneside

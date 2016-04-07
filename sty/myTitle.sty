@@ -10,29 +10,18 @@ example package^^J for wikibooks]
 \newcommand*{\supervisor}[1]{\gdef\@supervisor{#1}%
 }
 \newcommand*{\@supervisor}{Prof. Stephen Brown}
-\newcommand*{\studentNo}[1]{\gdef\@studentNo{#1}%
-}
-\newcommand*{\@studentNo}{999007024}
 \renewcommand*{\maketitle}{%
 \begin{titlepage}
 %{\raggedleft%
 %    \includegraphics[width=3cm]{example-image-16x9}\par
 %}\vspace{1cm}
-    \centering
-{\scshape\LARGE University of Toronto \par}
-\vspace{1cm}
-{\scshape\Large\@project\unskip\strut\par}
-\vspace{1.5cm}
+\centering
 {\huge\bfseries\@title\unskip\strut\par}
 \vspace{2cm}
-{\Large\itshape\@author\unskip\strut\par}
-{\Large\@studentNo\unskip\strut\par}
-\vfill
+submitted by\par
+{\@author\unskip\strut\par}
 supervised by\par
 \@supervisor\unskip\strut\par
-
-\vfill
-
 {\large \@date\par}
 \end{titlepage}
 }
