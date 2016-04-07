@@ -1,5 +1,6 @@
 C code for matrix multiply
 ==========================
+\label{app:c}
 
 Source code
 -----------
