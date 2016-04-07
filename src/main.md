@@ -33,7 +33,8 @@ header-includes:
 
 \include{introduction}
 \include{background}
-\include{body}
+\include{compiler}
+\include{bs}
 \include{conclusion}
 
 \appendix
