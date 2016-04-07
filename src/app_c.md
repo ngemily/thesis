@@ -16,13 +16,6 @@ Source code
 #include <stdio.h>
 #include <stdlib.h>
 
-#define DEBUG 0
-#if DEBUG
-#define DLOG(fmt, ...) printf("DEBUG: " fmt, ##__VA_ARGS__)
-#else
-#define DLOG(fmt, ...)
-#endif
-
 #define SIZE 20
 
 unsigned long long matrixMultiply(int *A, int *B, int *C, int n);
@@ -30,6 +23,7 @@ void loadMatrix(FILE *file, int *A, int size);
 void printMatrix(int *A, int size);
 void initializeMatrix(int *A, int size, int start);
 
+// hack: also return sum of all elements (as a checksum)
 unsigned long long matrixMultiply(int *A, int *B, int *C, int n) {
     int i, j, k;
     int row_dot_col;
@@ -49,6 +43,25 @@ loop: for (k = 0; k < n; k++) {
     return sum;
 }
 
+/** Initialize matrix.
+ *
+ * Initialize square matrix of size @size with sequential values starting with
+ * @start.
+ *
+ * @param A     pointer to matrix
+ * @param size  size of matrix
+ * @start       offset
+ */
+void initializeMatrix(int *A, int size, int start) {
+    int i;
+    int n = size * size;
+
+    for (i = 0; i < n; i++) {
+        A[i] = start + i;
+    }
+
+    return;
+}
 
 int main(int argc, char *argv[]) {
 
@@ -178,6 +191,39 @@ int64_t matrixMultiply(int32_t * A, int32_t * B, int32_t * C, uint32_t n) {
 }
 
 // From module:   src/main.c
+// Address range: 0x80486b0 - 0x80486f0
+// Line range:    101 - 110
+void initializeMatrix(int32_t * A, int32_t size, int32_t start) {
+    // 0x80486b0
+    int32_t v1;
+    int32_t n = v1; // bp-12
+    int32_t v2 = size * size; // 0x80486b9
+    n = 0;
+    if (v2 > 0) {
+        // 0x80486c9
+        *A = start;
+        n = 1;
+        if (v2 > 1) {
+            int32_t v3 = 1; // 0x80486e28
+            A[v3] = v3 + start;
+            int32_t v4 = n + 1; // 0x80486e2
+            n = v4;
+            while (v4 < v2) {
+                // 0x80486c9
+                // 0x80486c9
+                v3 = v4;
+                A[v3] = v3 + start;
+                v4 = n + 1;
+                n = v4;
+                // branch -> 0x80486c9
+            }
+            // 0x80486ee
+            return;
+        }
+    }
+}
+
+// From module:   src/main.c
 // Address range: 0x80486f1 - 0x80487cf
 // Line range:    112 - 136
 int main(int argc, char ** argv) {
@@ -209,5 +255,4 @@ int main(int argc, char ** argv) {
 // Detected functions: 3
 // Decompiler release: v2.1.2 (2016-01-27)
 // Decompilation date: 2016-03-03 22:09:57
-
 ```
