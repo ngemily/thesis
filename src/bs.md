@@ -68,6 +68,10 @@ while (v15 < n) {
 }
 \end{lstlisting}
 
+It is worth noting that the recovered code is unreadable.  In the current state
+of decompilers, it would be unreasonable to expect human intervention in this
+process.
+
 #### Variable naming
 
 Some variable names are preserved.  The variables `A`, `B`, `C`, and `n` are
@@ -90,6 +94,17 @@ finally uses `*p` notation to dereference the new pointer.
 Results
 -------
 
+High level synthesis attempts to use the control structures in the source code
+to determine how best to schedule and bind to hardware.  It was initially
+postulated that decompilers would lose some of that information and thereby
+result it worse performance.  That notion can be thought of as a broken
+telephone, where in adding more nodes to the chain of messengers, each node's
+interpretation and retransmission of the message modifies it slightly in a
+non-regenerative manner.
+
+However, the resulting hardware performed better than hardware generated
+directly from the source code.  Table \ref{tbl:results1} summarizes the results.
+
 +---------------------+--------+------------+-----+-----+--------------+
 |                     | cycles | FMax (MHz) | ALM | REG | Latency (us) |
 +=====================+========+============+=====+=====+==============+
@@ -98,7 +113,12 @@ Results
 | source              | 50464  | 183.05     | 144 | 280 | 275.68       |
 +---------------------+--------+------------+-----+-----+--------------+
 
-: Source and recovered code run through high level synthesis.
+: \label{tbl:results1} Source and recovered code run through high level synthesis.
+
+Using the recovered code as a guide, the source code was subtly changed with the
+aim of reproducing the performance boosts.  The motivation behind this was to
+determine the cause for the discrepancy.  Ideally, this would lead to some
+insight into potential improvements in the high level synthesis tool.
 
 +---------------------+--------+------------+-----+-----+--------------+
 |                     | cycles | FMax (MHz) | ALM | REG | Latency (us) |
@@ -116,3 +136,10 @@ Results
 
 : Attempts to mimic results seen in recovered code by making small changes to
 source code.
+
+The most notable change was achieved when the llvm instruction `getelementptr`
+was changed to `inttoptr`.  This was done by changing the memory access style,
+as noted in comparison of the source and recovered C code.  LLVM documentation
+claims that for integer types, the two instructions are the same.  The
+`getelementptr` instruction must obey stricter pointer aliasing rules than
+`inttoptr`.
