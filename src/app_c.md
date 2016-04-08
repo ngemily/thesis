@@ -24,7 +24,6 @@ void loadMatrix(FILE *file, int *A, int size);
 void printMatrix(int *A, int size);
 void initializeMatrix(int *A, int size, int start);
 
-// hack: also return sum of all elements (as a checksum)
 unsigned long long matrixMultiply(int *A, int *B, int *C, int n) {
     int i, j, k;
     int row_dot_col;
@@ -33,7 +32,7 @@ unsigned long long matrixMultiply(int *A, int *B, int *C, int n) {
     for (i = 0; i < n; i++) {
         for (j = 0; j < n; j++) {
             row_dot_col = 0;
-loop: for (k = 0; k < n; k++) {
+            for (k = 0; k < n; k++) {
                 row_dot_col += A[i * n + k] * B[k * n + j];
             }
             sum += row_dot_col;

@@ -11,6 +11,8 @@ header-includes:
     - \linespread{1.5}
     - \usepackage{caption}
     - \usepackage{subcaption}
+    - \usepackage{longtable}
+    - \usepackage{booktabs}
     - \usepackage[section]{placeins}
     - \usepackage[backend=biber]{biblatex}
     - \addbibresource{bib/report.bib}
